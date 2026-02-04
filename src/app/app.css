@@ -5,6 +5,7 @@ ul {
 .evenRow {
     background: #808080;
     padding: 1em;
+    color: white;
 }
 
 .oddRow {

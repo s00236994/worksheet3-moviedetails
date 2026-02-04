@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { inject } from '@angular/core';
+import { Movieservice } from './myservices/movieservice'; 
 
 @Component({
   selector: 'app-root',
@@ -8,37 +10,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('Martin Durkin worksheet2');
+  protected readonly title = signal('Week 3 - Movie Details');
 
-  protected movies = signal([
-    "Law Abiding Citizen",
-    "Seven",
-    "Rambo",
-    "Scarface",
-    "Real Steel"]
-
-  )
-
-  protected favourites=signal<string[]>([]);
-  
-
-  protected addFavourites(fav:string) {
-
-    //dont allow dupes
-    if (!this.favourites().includes(fav) ){
-
-       this.favourites.update(current => [...current, fav]);
-
-    }
-   
-  }
-
-  protected deleteFavourites(index:number) {
-    this.favourites.update(favourites =>
-      favourites.filter((_, i) => i !== index)
-    );
-  }
-
+  protected movieService = inject(Movieservice);
 }
-
-

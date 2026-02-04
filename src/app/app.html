@@ -1,0 +1,37 @@
+<h1>Week 2 - Fav Movies App [Martin Durkin - s00236994]</h1>
+<h2>Movie List</h2>
+
+<ul>
+  @for (movie of movies(); track movie; let i = $index; let isEven = $even; let isOdd = $odd) {
+  <li [class.evenRow]="isEven" [class.oddRow]="isOdd">
+    <button (click)="addFavourites(movie)">Favourite</button>
+    {{i + 1 }} {{movie}}
+  </li>
+  } @empty {
+  <li>No movies found</li>
+  }
+
+</ul>
+
+<br>
+
+<h2>My Favourites</h2>
+<ul>
+
+  @if (favourites().length > 0) {
+    {{ favourites().length }} movies chosen
+  }
+
+  <br> <br>
+  @for (movie of favourites(); track movie; let i = $index; let isEven = $even; let isOdd = $odd) {
+    <li [class.evenRow]="isEven" [class.oddRow]="isOdd">
+    <button (click)="deleteFavourites(i)">Delete</button>
+    {{i + 1 }} {{movie}}
+  </li>
+  } @empty {
+  <li>No movies found</li>
+  }
+
+  
+
+</ul>
